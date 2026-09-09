@@ -8,7 +8,7 @@ fun TvShows.toDomain() : Show {
         id = id,
         listPoster = image.medium,
         detailPoster = image.original,
-        title = title,
+        title = name,
         rating = rating?.average,
         premiered = premiered
     )

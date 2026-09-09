@@ -6,8 +6,12 @@ import okhttp3.MediaType.Companion.toMediaType
 import retrofit2.Retrofit
 
 private const val BASE_URL = "https://api.tvmaze.com/"
+private val json = Json {
+    ignoreUnknownKeys = true
+    coerceInputValues = true
+}
 
 val retrofit = Retrofit.Builder()
-    .addConverterFactory(Json.asConverterFactory("application/json".toMediaType()))
+    .addConverterFactory(json.asConverterFactory("application/json".toMediaType()))
     .baseUrl(BASE_URL)
     .build()

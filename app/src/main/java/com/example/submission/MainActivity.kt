@@ -11,6 +11,13 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation3.runtime.NavEntry
+import androidx.navigation3.runtime.rememberNavBackStack
+import androidx.navigation3.ui.NavDisplay
+import com.example.submission.navigation.Detail
+import com.example.submission.navigation.Home
+import com.example.submission.ui.detail.DetailScreen
+import com.example.submission.ui.list.HomeScreen
 import com.example.submission.ui.theme.SubmissionTheme
 
 class MainActivity : ComponentActivity() {
@@ -19,11 +26,10 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             SubmissionTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
+                Scaffold(
+                    modifier = Modifier.fillMaxSize()
+                ) { innerPadding ->
+                    Navigation(modifier = Modifier.padding(innerPadding))
                 }
             }
         }
@@ -31,17 +37,27 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
+fun Navigation(modifier: Modifier = Modifier) {
+    val backStack = rememberNavBackStack(Home)
+
+    NavDisplay(
+        backStack = backStack,
+        onBack = { backStack.removeLastOrNull() },
+        entryProvider = { key ->
+            when (key) {
+                is Home -> NavEntry(key) {
+                    HomeScreen(
+                        onItemClick = { id ->
+                            backStack.add(Detail(id = id))
+                        }
+                    )
+                }
+                is Detail -> NavEntry(key) {
+                    DetailScreen(id = key.id)
+                }
+                else -> throw IllegalArgumentException("Unknown key: $key")
+            }
+        },
         modifier = modifier
     )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    SubmissionTheme {
-        Greeting("Android")
-    }
 }

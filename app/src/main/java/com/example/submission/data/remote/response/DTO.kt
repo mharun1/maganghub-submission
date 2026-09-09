@@ -6,7 +6,7 @@ import kotlinx.serialization.Serializable
 data class TvShows(
     val id: Int,
     val image: TvPoster,
-    val title: String,
+    val name: String,
     val rating: TvRating?,
     val summary: String,
     val premiered: String,
