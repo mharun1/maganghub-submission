@@ -10,6 +10,7 @@ data class TvShows(
     val rating: TvRating?,
     val summary: String,
     val premiered: String,
+    val url: String,
 )
 
 @Serializable
