@@ -27,11 +27,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             SubmissionTheme {
-                Scaffold(
-                    modifier = Modifier.fillMaxSize()
-                ) { innerPadding ->
-                    Navigation(modifier = Modifier.padding(innerPadding))
-                }
+                Navigation(modifier = Modifier.fillMaxSize())
             }
         }
     }
