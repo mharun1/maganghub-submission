@@ -10,6 +10,7 @@ captures/
 *.aab
 *.apk
 output-metadata.json
+.gradle/
 
 # IntelliJ
 *.iml
