@@ -2,7 +2,7 @@
 
 ### AI Log Overview
 
-| AI Tool | 🗣️ Asked (Task / Inquiry) | 🤖 Got (Result / Suggestion) | ✅ Did (Action Taken) |
+| AI Tool | Asked (Task / Inquiry) | Got (Result / Suggestion) | Did (Action Taken) |
 | :--- | :--- | :--- | :--- |
 | **Claude** | Make a guideline for making the project and package structure. | Suggestion on using single module + package by feature. | Compare the project structure to my last project. |
 | **Claude** | Did repository need dependency injection? | Yes, with 2 suggested approaches using Dagger Hilt or manual injection. | Using manual injection, applying a similar concept to the previously built project. |
