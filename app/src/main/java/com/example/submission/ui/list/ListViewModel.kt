@@ -1,6 +1,7 @@
 package com.example.submission.ui.list
 
-import android.util.Log
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.submission.data.model.Show
@@ -11,6 +12,7 @@ import com.example.submission.ui.common.UiState
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 
+@RequiresApi(Build.VERSION_CODES.O)
 class ListViewModel(
     private val repository: TvShowRepository = Injection.tvShowRepository
 ): ViewModel() {
@@ -30,7 +32,6 @@ class ListViewModel(
             } catch (e: Exception) {
                 _uiState.value = UiState.Error(e.message ?: "Unknown Error")
             }
-            Log.d("Show", _uiState.value.toString())
         }
     }
 }
