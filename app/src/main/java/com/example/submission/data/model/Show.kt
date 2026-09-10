@@ -6,5 +6,7 @@ data class Show(
     val detailPoster: String,
     val title: String,
     val rating: Double?,
+    val summary: String,
     val premiered: String,
+    val url: String
 )
