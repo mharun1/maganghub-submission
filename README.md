@@ -40,3 +40,8 @@ Some specific decisions:
 4. **Optional detail info** (season, episode, cast, genre) on the detail screen, per the bonus points in the requirements.
 5. **Migrate from manual DI to Dagger Hilt** for easier dependency injection as the app grows.
 6. **Room for local caching**, so users can still view the latest data while offline.
+
+---
+
+Demonstration Video Link:
+https://drive.google.com/file/d/1xdmLXdlP21oGSm_TogzFAB3X-fdl15b-/view?usp=drivesdk
