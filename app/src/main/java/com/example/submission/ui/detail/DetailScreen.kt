@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Build
 import androidx.annotation.RequiresApi
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -19,6 +20,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.rounded.ArrowBack
 import androidx.compose.material.icons.filled.Share
 import androidx.compose.material.icons.rounded.Star
+import androidx.compose.material3.Button
 import androidx.compose.material3.ContainedLoadingIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
@@ -119,11 +121,16 @@ fun DetailScreen(
                 )
             }
             is UiState.Error -> {
-                Box(
-                    contentAlignment = Alignment.Center,
-                    modifier = modifier.fillMaxSize().padding(innerPadding)
+                Column(
+                    verticalArrangement = Arrangement.Center,
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    modifier = Modifier
+                        .padding(innerPadding)
+                        .padding(24.dp)
+                        .fillMaxSize()
                 ) {
-                    Text(text = state.errorMessage)
+                    Text(text = state.errorMessage, textAlign = TextAlign.Center)
+                    Button(onClick = {viewModel.getDetailShow(id)}) { Text("Retry") }
                 }
             }
         }

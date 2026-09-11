@@ -14,6 +14,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
+import androidx.compose.material3.Button
 import androidx.compose.material3.ContainedLoadingIndicator
 import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.material3.Scaffold
@@ -25,6 +26,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -70,11 +72,16 @@ fun HomeScreen(
                 )
             }
             is UiState.Error -> {
-                Box(
-                    contentAlignment = Alignment.Center,
-                    modifier = Modifier.padding(innerPadding)
+                Column(
+                    verticalArrangement = Arrangement.Center,
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    modifier = Modifier
+                        .padding(innerPadding)
+                        .padding(24.dp)
+                        .fillMaxSize()
                 ) {
-                    Text(text = state.errorMessage)
+                    Text(text = state.errorMessage, textAlign = TextAlign.Center)
+                    Button(onClick = {viewModel.getShows()}) { Text("Retry") }
                 }
             }
         }
